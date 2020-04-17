@@ -1,0 +1,13 @@
+.movable {
+  position: relative;
+
+  > .thumb {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    top: 0;
+    left: 0;
+    background: pink;
+  }
+
+}

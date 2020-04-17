@@ -1,0 +1,7 @@
+<div class="movable" [ngStyle]="getBoxStyle()">
+  <div class="thumb" [ngStyle]="getThumbStyle(thumbTL)"></div>
+  <div class="thumb" [ngStyle]="getThumbStyle(thumbTR)"></div>
+  <div class="thumb" [ngStyle]="getThumbStyle(thumbBL)"></div>
+  <div class="thumb" [ngStyle]="getThumbStyle(thumbBR)"></div>
+  <ng-content></ng-content>
+</div>
