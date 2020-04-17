@@ -3,11 +3,21 @@
 
   > .thumb {
     position: absolute;
+    z-index: 1;
     width: 10px;
     height: 10px;
+    top: -5px;
+    left: -5px;
+    background: pink;
+  }
+
+  > .content {
+    position: absolute;
+    z-index: 0;
+    transform-origin: center center;
     top: 0;
     left: 0;
-    background: pink;
+    background: #eee;
   }
 
 }

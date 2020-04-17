@@ -1,7 +1,18 @@
-<div class="movable" [ngStyle]="getBoxStyle()">
-  <div class="thumb" [ngStyle]="getThumbStyle(thumbTL)"></div>
-  <div class="thumb" [ngStyle]="getThumbStyle(thumbTR)"></div>
-  <div class="thumb" [ngStyle]="getThumbStyle(thumbBL)"></div>
-  <div class="thumb" [ngStyle]="getThumbStyle(thumbBR)"></div>
-  <ng-content></ng-content>
+<div class="movable" [ngStyle]="getCenterStyle()">
+  <div class="thumb"
+    (mousedown)="startResize($event, updateResizeUL)"
+    [ngStyle]="getThumbStyle(thumbTL)"></div>
+  <div class="thumb"
+    (mousedown)="startResize($event, updateResizeUR)"
+    [ngStyle]="getThumbStyle(thumbTR)"></div>
+  <div class="thumb" 
+    (mousedown)="startResize($event, updateResizeBL)"
+    [ngStyle]="getThumbStyle(thumbBL)"></div>
+  <div class="thumb" 
+    (mousedown)="startResize($event, updateResizeBR)"
+    [ngStyle]="getThumbStyle(thumbBR)"></div>
+  <div class="content" [ngStyle]="getBoxStyle()"
+    (mousedown)="startTranslate($event)">
+    <ng-content></ng-content>
+  </div>
 </div>

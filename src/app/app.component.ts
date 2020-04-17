@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Movable } from 'src/app/model/movable';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +8,6 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'thumb-up';
+
+  public movable = new Movable();
 }
