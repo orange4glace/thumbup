@@ -1,0 +1,25 @@
+.layer-control {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  padding-bottom: 0px;
+  box-sizing: border-box;
+
+  > .list {
+    position: relative;
+    flex: 1;
+    background: #383838;
+    border-radius: 5px;
+    box-sizing: border-box;
+    overflow: auto;
+  }
+
+  > .buttons {
+    // display: flex;
+    flex-basis: 40px;
+    padding: 5px 0;
+    align-content: flex-end;
+  }
+
+}

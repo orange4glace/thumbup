@@ -1,0 +1,26 @@
+<mat-card class="layer-control">
+  <div class="list">
+    <ng-container *ngFor="let drawingComponent of drawingComponents;
+      index as i; trackBy: trackFunc">
+      <layer-control-item (click)="onItemClick(drawingComponent)"
+        [drawing]="drawingComponent.drawing"
+        [active]="drawingComponent.drawing === focusedDrawing">
+      </layer-control-item>
+      <mat-divider></mat-divider>
+    </ng-container>
+  </div>
+  <div class="buttons">
+    <button mat-icon-button (click)="onMoveUpClick()">
+      <span class="material-icons">keyboard_arrow_up</span>
+    </button>
+    <button mat-icon-button (click)="onMoveDownClick()">
+      <span class="material-icons">keyboard_arrow_down</span>
+    </button>
+    <button mat-icon-button (click)="onRemoveClick()">
+      <span class="material-icons">delete</span>
+    </button>
+    <button mat-icon-button (click)="onSaveClick()" style="float: right">
+      <span class="material-icons">save_alt</span>
+    </button>
+  </div>
+</mat-card>

@@ -1,0 +1,29 @@
+
+<div class="col">
+  <div>R<span></span></div>
+  <mat-slider min="0" max="255" step="1" [(value)]="r"
+    (input)="onInput($event.value, undefined, undefined, undefined)"
+    (change)="onChange()">
+  </mat-slider>
+</div>
+<div class="col">
+  <div>G<span></span></div>
+  <mat-slider min="0" max="255" step="1" [(value)]="g"
+    (input)="onInput(undefined, $event.value, undefined, undefined)"
+    (change)="onChange()">
+  </mat-slider>
+</div>
+<div class="col">
+  <div>B<span></span></div>
+  <mat-slider min="0" max="255" step="1" [(value)]="b"
+    (input)="onInput(undefined, undefined, $event.value, undefined)"
+    (change)="onChange()">
+  </mat-slider>
+</div>
+<div class="col">
+  <div>O<span></span></div>
+  <mat-slider min="0" max="1" step="0.05" [(value)]="o"
+    (input)="onInput(undefined, undefined, undefined, $event.value)"
+    (change)="onChange()">
+  </mat-slider>
+</div>

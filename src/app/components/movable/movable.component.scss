@@ -1,15 +1,8 @@
 .movable {
-  position: relative;
+  position: absolute;
+  top: 0;
+  left: 0;
 
-  > .thumb {
-    position: absolute;
-    z-index: 1;
-    width: 10px;
-    height: 10px;
-    top: -5px;
-    left: -5px;
-    background: pink;
-  }
 
   > .content {
     position: absolute;
@@ -17,7 +10,85 @@
     transform-origin: center center;
     top: 0;
     left: 0;
-    background: #eee;
+  }
+
+}
+
+.thumbs {
+  position: relative;
+  z-index: 10000;
+
+  > .thumb {
+    position: absolute;
+    z-index: 2;
+    width: 14px;
+    height: 14px;
+    top: -7px;
+    left: -7px;
+
+    &.tl, &.br {
+      cursor: nw-resize;
+    }
+    &.tr, &.bl {
+      cursor: ne-resize;
+    }
+    
+    // &::after {
+    //   position: absolute;
+    //   width: 50%;
+    //   height: 50%;
+    //   content: '';
+    // }
+
+    // &.tl {
+    //   cursor: nw-resize;
+    //   &::after {
+    //     top: 50%;
+    //     left: 50%;
+    //     border-top: 3px solid white;
+    //     border-left: 3px solid white;
+    //   }
+    // }
+
+    // &.tr {
+    //   cursor: nw-resize;
+    //   &::after {
+    //     bottom: 0;
+    //     left: 0;
+    //     border-top: 3px solid white;
+    //     border-right: 3px solid white;
+    //   }
+    // }
+  }
+
+  > .line {
+    position: absolute;
+    z-index: 1;
+    border-bottom: 2px dashed #ec5555;
+    transform-origin: left center;
+
+    &.top {
+      margin-top: -2px;
+    }
+
+    &.rotate {
+      > .thumb {
+        position: absolute;
+        cursor: url("/assets/rotate_right-24px.svg") 12 12, auto;
+        right: 0;
+        top: 0;
+        width: 14px;
+        height: 14px;
+        background: #ec5555;
+        border-radius: 100%;
+        margin-top: -7px;
+        margin-right: -7px;
+      }
+    }
+  }
+
+  > .content {
+    position: absolute;
   }
 
 }

@@ -1,3 +1,21 @@
-<ng-container *ngFor="let drawing of canvas.drawings">
-  <drawing [drawing]="drawing"></drawing>
-</ng-container>
+<div class="container" #container
+  (mousedown)="onMousedown($event)">
+  <div class="canvas" #canvas>
+    <div class="canvas-camera" [ngStyle]="getCanvasStyle()">
+      <div class="canvas-cover">
+      </div>
+      <div class="canvas-background" [ngStyle]="getContentStyle()"></div>
+      <div class="canvas-border" [ngStyle]="getContentStyle()">
+        <div class="cover t"></div>
+        <div class="cover b"></div>
+        <div class="cover l"></div>
+        <div class="cover r"></div>
+      </div>
+      <div class="drawings">
+        <ng-container #drawingContainer>
+        </ng-container>
+      </div>
+    </div>
+    <ng-template [cdkPortalOutlet]="guiPortal"></ng-template>
+  </div>
+</div>

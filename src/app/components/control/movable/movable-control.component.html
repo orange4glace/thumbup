@@ -1,0 +1,26 @@
+<div class="control">
+  <div class="row">
+    <mat-form-field>
+      <input matInput placeholder="Position X" [(ngModel)]="x"
+        (keyup)="onChangePosition(+$event.target.value, undefined)">
+      <span matSuffix>px</span>
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput placeholder="Position Y" [(ngModel)]="y"
+        (keyup)="onChangePosition(undefined, +$event.target.value)">
+      <span matSuffix>px</span>
+    </mat-form-field>
+  </div>
+  <div class="row">
+    <mat-form-field>
+      <input matInput placeholder="Width" [(ngModel)]="w"
+        (keyup)="onChangeSize(+$event.target.value, undefined)">
+      <span matSuffix>px</span>
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput placeholder="Height" [(ngModel)]="h"
+        (keyup)="onChangeSize(undefined, +$event.target.value)">
+      <span matSuffix>px</span>
+    </mat-form-field>
+  </div>
+</div>

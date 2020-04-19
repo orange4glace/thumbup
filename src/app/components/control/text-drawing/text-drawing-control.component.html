@@ -1,0 +1,34 @@
+<div class="control">
+  <div class="row">
+    <mat-form-field style="width: 100%">
+      <input matInput placeholder="Text" [(ngModel)]="text"
+        (keyup)="onChangeText($event.target.value)"
+        (blur)="onBlur()">
+    </mat-form-field>
+  </div>
+  <div class="row">
+    <mat-form-field>
+      <mat-label>Font</mat-label>
+      <mat-select [value]="font"
+          (selectionChange)="onChangeFont($event.value)">
+        <mat-option value="Nanum Gothic">Nanum Gothic</mat-option>
+        <mat-option value="Nanum Myeongjo">Nanum Myeongjo</mat-option>
+        <mat-option value="Nanum Brush Script">Nanum Brush Script</mat-option>
+        <mat-option value="Nanum Pen Script">Nanum Pen Script</mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+  <div class="row">
+    <mat-form-field>
+      <input matInput placeholder="Size" [(ngModel)]="size"
+        (keyup)="onChangeSize(+$event.target.value)"
+        (blur)="onBlur()">
+    </mat-form-field>
+    <div class="color">
+      <input class="color" [(colorPicker)]="color"
+          (colorPickerSelect)="onColorChange()"
+          [cpPosition]="'left'"
+          [style.background]="color"/>
+    </div>
+  </div>
+</div>

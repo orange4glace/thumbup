@@ -1,0 +1,7 @@
+:host {
+  display: flex;
+
+  > .col {
+    flex: 1;
+  }
+}

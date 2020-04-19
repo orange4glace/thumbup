@@ -1,0 +1,43 @@
+<mat-card class="control-pannel">
+  <div class="tools">
+    <div class="item">
+      <button mat-icon-button (click)="addTextDrawing()">
+        <span class="material-icons">title</span>
+      </button>
+    </div>
+    <div class="item file-input">
+      <button accept="image/*" mat-icon-button>
+        <input type="file" id="file" (change)="addImageDrawing($event)">
+        <label for="file">
+          <span class="material-icons">insert_photo</span>
+        </label>
+      </button>
+    </div>
+  </div>
+  <mat-divider></mat-divider>
+  <div class="canvas">
+    <div class="size eq">
+      <mat-form-field>
+        <input matInput placeholder="Canvas width" [(ngModel)]="canvasWidth"
+          (keyup)="onChangeCanvasSize(+$event.target.value, undefined)">
+        <span matSuffix>px</span>
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput placeholder="Canvas height" [(ngModel)]="canvasHeight"
+          (keyup)="onChangeCanvasSize(undefined, +$event.target.value)">
+        <span matSuffix>px</span>
+      </mat-form-field>
+    </div>
+    <div class="zoom">
+      <div>Zoom <span>{{canvasZoom}}x</span></div>
+      <mat-slider min="0.2" max="3" step="0.1" [(value)]="canvasZoom"
+        (input)="onChangeCanvasZoom($event)">
+      </mat-slider>
+    </div>
+  </div>
+  <mat-divider></mat-divider>
+  <movable-control *ngIf="focusedDrawing"
+      [movable]="focusedDrawing.drawing.movable">
+  </movable-control>
+  <drawing-control [drawing]="focusedDrawing?.drawing"></drawing-control>
+</mat-card>

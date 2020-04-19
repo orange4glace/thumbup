@@ -1,6 +1,7 @@
 import vec2 from './vec2'
 
 import { epsilon } from './constants'
+import { single } from 'rxjs/operators'
 
 export default class mat2 {
 
@@ -13,6 +14,12 @@ export default class mat2 {
     private values = new Float32Array(4)
 
     static readonly identity = new mat2().setIdentity()
+
+    static rotation(angle: number): mat2 {
+        const cos = Math.cos(angle);
+        const sin = Math.sin(angle);
+        return new mat2([cos, -sin, sin, cos]);
+    }
 
     at(index: number): number {
         return this.values[index]
@@ -124,23 +131,6 @@ export default class mat2 {
         this.values[1] = a11 * matrix.at(1) + a12 * matrix.at(3)
         this.values[2] = a21 * matrix.at(0) + a22 * matrix.at(2)
         this.values[3] = a21 * matrix.at(1) + a22 * matrix.at(3)
-
-        return this
-    }
-
-    rotate(angle: number): mat2 {
-        const a11 = this.values[0]
-        const a12 = this.values[1]
-        const a21 = this.values[2]
-        const a22 = this.values[3]
-
-        const sin = Math.sin(angle)
-        const cos = Math.cos(angle)
-
-        this.values[0] = a11 * cos + a12 * sin
-        this.values[1] = a11 * -sin + a12 * cos
-        this.values[2] = a21 * cos + a22 * sin
-        this.values[3] = a21 * -sin + a22 * cos
 
         return this
     }

@@ -1,0 +1,25 @@
+.container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #303030;
+  overflow: hidden;
+
+  > control-pannel {
+    position: absolute;
+    top: 20px;
+    right: 0;
+    width: 340px;
+    bottom: 340px;
+  }
+
+  > layer-control {
+    position: absolute;
+    bottom: 20px;
+    right: 0;
+    width: 340px;
+    height: 300px;
+  }
+}

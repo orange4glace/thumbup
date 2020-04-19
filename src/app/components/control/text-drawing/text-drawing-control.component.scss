@@ -1,0 +1,23 @@
+.control {
+
+  > .row {
+    display: flex;
+
+    > * {
+      flex: 1;
+    }
+
+    > .color {
+        display: flex;
+        align-content: center;
+        justify-content: center;
+        box-sizing: border-box;
+        padding: 20px 0 20px 20px;
+
+        > input {
+          border: 0;
+        }
+    }
+  }
+
+}

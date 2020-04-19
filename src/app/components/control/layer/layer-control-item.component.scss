@@ -1,0 +1,16 @@
+:host {
+
+  &.active {
+    > .item {
+      background: #dcdcdc;
+      color: #3e3e3e;
+    }
+  }
+
+  > .item {
+    color: #c5c5c5;
+    padding: 0 10px;
+    line-height: 40px;
+  }
+
+}

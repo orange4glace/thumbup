@@ -1,0 +1,16 @@
+<ng-container #drawingControlContainer></ng-container>
+<ng-container *ngIf="drawing">
+  <div class="filter">
+    <mat-form-field>
+      <mat-label>Filter</mat-label>
+      <mat-select [value]="filterType"
+          (selectionChange)="onFilterChange($event)">
+        <mat-option>None</mat-option>
+        <mat-option value="grayscale">Grayscale</mat-option>
+        <mat-option value="blur">Blur</mat-option>
+        <mat-option value="color">Color</mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+</ng-container>
+<ng-container #filterControlContainer></ng-container>
