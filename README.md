@@ -2,6 +2,6 @@
 
 ![image](./assets/thumbup2.gif)
 
-[Demo Page](http://orange4glace.cafe24.com/thumbup)
+[Demo Page](https://orange4glace.github.io/thumbup/)
 
 ThumbUP is a simple web thumbnail editing tool.
