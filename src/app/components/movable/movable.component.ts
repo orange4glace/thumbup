@@ -215,8 +215,6 @@ export class MovableComponent implements OnInit, OnDestroy {
       this.srcMovableRotate_ :
       (this.srcMovableRotate_ + 180 + 360) % 360;
 
-    console.log(newSize.x, newSize.y);
-
     this.commandService_.dispatch(
         new MovableTranslateCommand(movable, nx, ny));
     this.commandService_.dispatch(

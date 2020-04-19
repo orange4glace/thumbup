@@ -17,6 +17,7 @@ import { MatSliderModule } from '@angular/material/slider';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
+import { MatCheckboxModule } from '@angular/material/checkbox';
 import { FormsModule } from '@angular/forms';
 import { CanvasComponentService } from 'src/app/components/canvas/canvas.component.service';
 import { MovableControlComponent } from 'src/app/components/control/movable/movable-control.component';
@@ -26,6 +27,7 @@ import { TextDrawingControlComponent } from 'src/app/components/control/text-dra
 import { DrawingControlComponent } from 'src/app/components/control/drawing/drawing-control.component';
 import { ColorFilterControlComponent } from 'src/app/components/control/filter/color-filter-control';
 import { ColorPickerModule } from 'ngx-color-picker';
+import { ImageDrawingControlComponent } from 'src/app/components/control/image-drawing/image-drawing-control.component';
 
 @NgModule({
   declarations: [
@@ -37,6 +39,7 @@ import { ColorPickerModule } from 'ngx-color-picker';
     DrawingControlComponent,
     ColorFilterControlComponent,
     TextDrawingControlComponent,
+    ImageDrawingControlComponent,
     MovableComponent,
     CanvasComponent,
     ImageDrawingComponent,
@@ -55,6 +58,7 @@ import { ColorPickerModule } from 'ngx-color-picker';
     MatInputModule,
     MatSliderModule,
     MatSelectModule,
+    MatCheckboxModule,
 
     ColorPickerModule
   ],

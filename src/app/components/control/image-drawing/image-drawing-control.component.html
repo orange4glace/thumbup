@@ -1,0 +1,10 @@
+<div class="control">
+  <div class="row">
+    <mat-checkbox [ngModel]="invertX" style="margin-right: 10px"
+      (change)="onChangeInvert($event.checked, undefined)">Invert X
+    </mat-checkbox>
+    <mat-checkbox [ngModel]="invertY"
+      (change)="onChangeInvert(undefined, $event.checked)">Invert Y
+    </mat-checkbox>
+  </div>
+</div>

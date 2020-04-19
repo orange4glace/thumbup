@@ -50,11 +50,22 @@ export class ImageDrawingComponent implements IDrawingComponent, AfterViewInit, 
 
   public render(ctx: CanvasRenderingContext2D) {
     const movable = this.drawing.movable;
+    let x = 0, y = 0;
+    ctx.save();
+    if (this.drawing.invertX) {
+      x = -movable.w;
+      ctx.scale(-1, 1);
+    }
+    if (this.drawing.invertY) {
+      y = -movable.h;
+      ctx.scale(1, -1);
+    }
     ctx.drawImage(this.drawing.img,
         0, 0, this.drawing.img.width, this.drawing.img.height,
-        0, 0, Math.abs(movable.w), Math.abs(movable.h));
+        x, y, movable.w, movable.h);
     const filter = this.drawing.filter;
     filter && filter.apply(ctx);
+    ctx.restore();
   }
 
 }
