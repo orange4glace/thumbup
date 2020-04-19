@@ -290,7 +290,7 @@ export class CanvasComponent implements OnInit, OnDestroy, AfterViewInit {
     cvs.height = this.canvas.height;
     ctx.fillStyle = 'white';
     ctx.fillRect(0, 0, cvs.width, cvs.height);
-    for (let i = 0; i < this.drawingComponents.length; i ++) {
+    for (let i = this.drawingComponents.length - 1; i >= 0; i --) {
       const drawingComponent = this.drawingComponents[i];
       const movable = drawingComponent.movableComponent.movable;
       tmpCvs.width = movable.w;
