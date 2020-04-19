@@ -1,6 +1,6 @@
 import { Component, ComponentFactoryResolver, Input, OnInit, Inject, Type, ViewChild, ViewContainerRef, AfterViewInit, ComponentFactory, Injector, OnDestroy, ComponentRef, EventEmitter, ElementRef } from '@angular/core';
 import { ComponentPortal, Portal, TemplatePortal } from '@angular/cdk/portal';
-import { Canvas, CanvasDrawingAddRemoveEvent } from 'src/app/model/canvas';
+import { Canvas, CanvasDrawingAddRemoveEvent, CanvasRemoveDrawingCommand, CanvasAddStackElementCommand } from 'src/app/model/canvas';
 import { ICommandService, CanvasCommandService } from 'src/app/service/command.service';
 import { Drawing } from 'src/app/model/drawing';
 import { ImageDrawing } from 'src/app/model/image-drawing';
@@ -12,6 +12,7 @@ import { IDrawingComponent } from 'src/app/components/drawing/drawing.component'
 import { MovableComponent } from 'src/app/components/movable/movable.component';
 import { CanvasComponentService } from 'src/app/components/canvas/canvas.component.service';
 import vec2 from 'src/app/util/vec2';
+import hotkeys from 'hotkeys-js';
 
 @Component({
   selector: 'canvas-component',
@@ -72,10 +73,18 @@ export class CanvasComponent implements OnInit, OnDestroy, AfterViewInit {
   constructor(
     private readonly injector_: Injector,
     private readonly canvasComponentService_: CanvasComponentService,
-    @Inject(ICommandService) private readonly commadService_: CanvasCommandService,
+    @Inject(ICommandService) private readonly commandService_: CanvasCommandService,
     private readonly componentFactoryResolver_: ComponentFactoryResolver) {
     this.canvasComponentService_.canvasComponent = this;
     this.moveCamera = this.moveCamera.bind(this);
+
+    hotkeys('delete', () => {
+      if (!this.focusedDrawing) return;
+      this.commandService_.dispatch(
+        new CanvasRemoveDrawingCommand(this.canvas, this.focusedDrawing.drawing));
+      this.commandService_.dispatch(
+        new CanvasAddStackElementCommand());
+    })
   }
   
   ngOnDestroy() {
@@ -83,7 +92,7 @@ export class CanvasComponent implements OnInit, OnDestroy, AfterViewInit {
   }
 
   ngOnInit() {
-    this.commadService_.canvas = this.canvas;
+    this.commandService_.canvas = this.canvas;
   }
 
   ngAfterViewInit() {
