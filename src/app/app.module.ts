@@ -28,6 +28,7 @@ import { DrawingControlComponent } from 'src/app/components/control/drawing/draw
 import { ColorFilterControlComponent } from 'src/app/components/control/filter/color-filter-control';
 import { ColorPickerModule } from 'ngx-color-picker';
 import { ImageDrawingControlComponent } from 'src/app/components/control/image-drawing/image-drawing-control.component';
+import { KeybindingService } from 'src/app/service/keybinding.service';
 
 @NgModule({
   declarations: [
@@ -63,6 +64,7 @@ import { ImageDrawingControlComponent } from 'src/app/components/control/image-d
     ColorPickerModule
   ],
   providers: [
+    KeybindingService,
     CanvasService,
     CanvasComponentService
   ],

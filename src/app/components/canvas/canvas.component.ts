@@ -13,6 +13,7 @@ import { MovableComponent } from 'src/app/components/movable/movable.component';
 import { CanvasComponentService } from 'src/app/components/canvas/canvas.component.service';
 import vec2 from 'src/app/util/vec2';
 import hotkeys from 'hotkeys-js';
+import { KeybindingService, IKeybindingDisposer } from 'src/app/service/keybinding.service';
 
 @Component({
   selector: 'canvas-component',
@@ -35,6 +36,8 @@ export class CanvasComponent implements OnInit, OnDestroy, AfterViewInit {
       containerRef_: ElementRef<HTMLDivElement>;
   @ViewChild('canvas', {static:true})
       canvasRef_: ElementRef<HTMLDivElement>;
+
+  private keybindingDisposers_: IKeybindingDisposer[] = [];
 
   public guiPortal: Portal<any>;
 
@@ -73,22 +76,38 @@ export class CanvasComponent implements OnInit, OnDestroy, AfterViewInit {
   constructor(
     private readonly injector_: Injector,
     private readonly canvasComponentService_: CanvasComponentService,
+    keybindingService_: KeybindingService,
     @Inject(ICommandService) private readonly commandService_: CanvasCommandService,
     private readonly componentFactoryResolver_: ComponentFactoryResolver) {
     this.canvasComponentService_.canvasComponent = this;
     this.moveCamera = this.moveCamera.bind(this);
 
-    hotkeys('delete', () => {
+    this.keybindingDisposers_.push(keybindingService_.bind({
+      keychord: 'ctrl+z',
+      mac: 'command+z'
+    }, () => {
+      this.canvas.editStack.undo();
+    }));
+    this.keybindingDisposers_.push(keybindingService_.bind({
+      keychord: 'ctrl+y',
+      mac: 'command+y'
+    }, () => {
+      this.canvas.editStack.redo();
+    }));
+    this.keybindingDisposers_.push(keybindingService_.bind({
+      keychord: 'delete'
+    }, () => {
       if (!this.focusedDrawing) return;
       this.commandService_.dispatch(
         new CanvasRemoveDrawingCommand(this.canvas, this.focusedDrawing.drawing));
       this.commandService_.dispatch(
         new CanvasAddStackElementCommand());
-    })
+    }));
   }
   
   ngOnDestroy() {
     this.subs_.forEach(sub => sub.unsubscribe());
+    this.keybindingDisposers_.forEach(disposer => disposer());
   }
 
   ngOnInit() {
